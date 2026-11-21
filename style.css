@@ -290,8 +290,27 @@ h2 {
   color: var(--text-muted);
 }
 
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.skill-logo {
+  width: clamp(14px, 1.35vw, 18px);
+  height: clamp(14px, 1.35vw, 18px);
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+}
+
+.skill-logo-rounded {
+  border-radius: 3px;
+}
+
 .skill-name {
-  font-size: clamp(0.76rem, 0.96vw, 0.88rem);
+  font-size: clamp(0.74rem, 0.92vw, 0.86rem);
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.25;
@@ -373,6 +392,7 @@ h2 {
 }
 
 footer {
+  width: 100%;
   color: var(--text-muted);
   font-size: clamp(0.72rem, 0.88vw, 0.8rem);
   letter-spacing: 0.01em;
@@ -477,8 +497,17 @@ footer {
     font-size: 0.58rem;
   }
 
+  .skill-row {
+    gap: 6px;
+  }
+
+  .skill-logo {
+    width: 15px;
+    height: 15px;
+  }
+
   .skill-name {
-    font-size: clamp(0.7rem, 2.9vw, 0.8rem);
+    font-size: clamp(0.68rem, 2.8vw, 0.78rem);
   }
 
   .panel-connect {
@@ -587,9 +616,19 @@ footer {
     display: none;
   }
 
+  .skill-row {
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .skill-logo {
+    width: 13px;
+    height: 13px;
+  }
+
   .skill-name {
     font-size: 0.68rem;
-    text-align: center;
+    text-align: left;
   }
 
   .panel-connect {
