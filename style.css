@@ -26,10 +26,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--text-primary);
-  background:
-    radial-gradient(ellipse 80% 70% at 15% 10%, rgba(14, 165, 233, 0.22), transparent 55%),
-    radial-gradient(ellipse 70% 70% at 88% 88%, rgba(59, 130, 246, 0.24), transparent 55%),
-    linear-gradient(155deg, #030712 0%, #071226 48%, #0a1836 100%);
+  background: linear-gradient(155deg, #020612 0%, #050d21 50%, #081533 100%);
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -40,59 +37,63 @@ body {
   overflow-x: hidden;
 }
 
-/* Luminous ambient spheres behind the frosted glass */
+/* Luminous ambient spheres orbiting smoothly behind the frosted glass */
 .ambient {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
   z-index: 0;
+  transform: translateZ(0);
 }
 
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.55;
+  filter: blur(clamp(72px, 8vw, 115px));
+  opacity: 0.65;
   will-change: transform;
 }
 
 .orb-1 {
-  width: clamp(240px, 36vw, 520px);
-  height: clamp(240px, 36vw, 520px);
-  top: -12%;
-  left: -6%;
-  background: radial-gradient(circle, #38bdf8 0%, #0284c7 45%, transparent 72%);
-  animation: drift-1 18s ease-in-out infinite alternate;
+  width: clamp(340px, 50vw, 720px);
+  height: clamp(340px, 50vw, 720px);
+  top: -16%;
+  left: -10%;
+  transform-origin: 86% 84%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.95) 0%, rgba(2, 132, 199, 0.72) 45%, transparent 72%);
+  animation: orbit-cw 26s linear infinite;
 }
 
 .orb-2 {
-  width: clamp(260px, 38vw, 560px);
-  height: clamp(260px, 38vw, 560px);
-  bottom: -16%;
-  right: -6%;
-  background: radial-gradient(circle, #60a5fa 0%, #2563eb 45%, transparent 72%);
-  animation: drift-2 22s ease-in-out infinite alternate;
+  width: clamp(360px, 54vw, 780px);
+  height: clamp(360px, 54vw, 780px);
+  bottom: -20%;
+  right: -10%;
+  transform-origin: 15% 18%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.92) 0%, rgba(37, 99, 235, 0.78) 45%, transparent 72%);
+  animation: orbit-ccw 32s linear infinite;
 }
 
 .orb-3 {
-  width: clamp(180px, 26vw, 380px);
-  height: clamp(180px, 26vw, 380px);
-  top: 42%;
-  left: 44%;
-  background: radial-gradient(circle, #818cf8 0%, #4f46e5 45%, transparent 72%);
-  opacity: 0.35;
-  animation: drift-1 26s ease-in-out infinite alternate-reverse;
+  width: clamp(280px, 40vw, 580px);
+  height: clamp(280px, 40vw, 580px);
+  top: 14%;
+  left: 38%;
+  transform-origin: 30% 74%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.85) 0%, rgba(67, 56, 202, 0.65) 45%, transparent 72%);
+  opacity: 0.48;
+  animation: orbit-cw 21s linear infinite;
 }
 
-@keyframes drift-1 {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(28px, 22px, 0) scale(1.06); }
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes drift-2 {
-  from { transform: translate3d(0, 0, 0) scale(1); }
-  to { transform: translate3d(-26px, -20px, 0) scale(1.08); }
+@keyframes orbit-ccw {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
