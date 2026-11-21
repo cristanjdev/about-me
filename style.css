@@ -55,35 +55,38 @@ body {
   will-change: transform;
 }
 
+/* Left-side cyan glow — orbits clockwise along the left half */
 .orb-1 {
-  width: clamp(340px, 50vw, 720px);
-  height: clamp(340px, 50vw, 720px);
-  top: -16%;
-  left: -10%;
-  transform-origin: 86% 84%;
+  width: clamp(320px, 46vw, 640px);
+  height: clamp(320px, 46vw, 640px);
+  top: 6%;
+  left: -12%;
+  transform-origin: 68% 72%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.95) 0%, rgba(2, 132, 199, 0.72) 45%, transparent 72%);
-  animation: orbit-cw 26s linear infinite;
+  animation: orbit-cw 22s linear infinite;
 }
 
+/* Right-side royal sapphire glow — orbits counter-clockwise along the right half */
 .orb-2 {
-  width: clamp(360px, 54vw, 780px);
-  height: clamp(360px, 54vw, 780px);
-  bottom: -20%;
-  right: -10%;
-  transform-origin: 15% 18%;
+  width: clamp(340px, 48vw, 680px);
+  height: clamp(340px, 48vw, 680px);
+  bottom: 4%;
+  right: -12%;
+  transform-origin: 30% 28%;
   background: radial-gradient(circle, rgba(96, 165, 250, 0.92) 0%, rgba(37, 99, 235, 0.78) 45%, transparent 72%);
-  animation: orbit-ccw 32s linear infinite;
+  animation: orbit-ccw 29s linear infinite;
 }
 
+/* Center azure-indigo glow — weaves across the viewport in a seamless figure-8 */
 .orb-3 {
-  width: clamp(280px, 40vw, 580px);
-  height: clamp(280px, 40vw, 580px);
-  top: 14%;
-  left: 38%;
-  transform-origin: 30% 74%;
+  --orb3: clamp(280px, 38vw, 540px);
+  width: var(--orb3);
+  height: var(--orb3);
+  top: calc(50% - var(--orb3) / 2);
+  left: calc(50% - var(--orb3) / 2);
   background: radial-gradient(circle, rgba(59, 130, 246, 0.85) 0%, rgba(67, 56, 202, 0.65) 45%, transparent 72%);
   opacity: 0.48;
-  animation: orbit-cw 21s linear infinite;
+  animation: figure-eight 37s linear infinite;
 }
 
 @keyframes orbit-cw {
@@ -94,6 +97,26 @@ body {
 @keyframes orbit-ccw {
   from { transform: rotate(360deg); }
   to { transform: rotate(0deg); }
+}
+
+@keyframes figure-eight {
+  0%     { transform: translate3d(0vw, 0vh, 0); }
+  6.25%  { transform: translate3d(9.2vw, -12.7vh, 0); }
+  12.5%  { transform: translate3d(17vw, -18vh, 0); }
+  18.75% { transform: translate3d(22.2vw, -12.7vh, 0); }
+  25%    { transform: translate3d(24vw, 0vh, 0); }
+  31.25% { transform: translate3d(22.2vw, 12.7vh, 0); }
+  37.5%  { transform: translate3d(17vw, 18vh, 0); }
+  43.75% { transform: translate3d(9.2vw, 12.7vh, 0); }
+  50%    { transform: translate3d(0vw, 0vh, 0); }
+  56.25% { transform: translate3d(-9.2vw, -12.7vh, 0); }
+  62.5%  { transform: translate3d(-17vw, -18vh, 0); }
+  68.75% { transform: translate3d(-22.2vw, -12.7vh, 0); }
+  75%    { transform: translate3d(-24vw, 0vh, 0); }
+  81.25% { transform: translate3d(-22.2vw, 12.7vh, 0); }
+  87.5%  { transform: translate3d(-17vw, 18vh, 0); }
+  93.75% { transform: translate3d(-9.2vw, 12.7vh, 0); }
+  100%   { transform: translate3d(0vw, 0vh, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
