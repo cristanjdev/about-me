@@ -102,7 +102,7 @@ body {
 .shell {
   position: relative;
   z-index: 1;
-  width: min(1100px, 100%);
+  width: min(1160px, 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +113,7 @@ body {
 .bento {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
   gap: clamp(12px, 1.6vw, 18px);
   align-items: stretch;
 }
@@ -264,6 +264,8 @@ h2 {
 }
 
 .skills li {
+  container-type: inline-size;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -292,16 +294,18 @@ h2 {
 
 .stack-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 5px 9px;
+  gap: clamp(4px, 3.4cqi, 10px);
+  min-width: 0;
 }
 
 .stack-item {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: clamp(0.72rem, 0.86vw, 0.8rem);
+  gap: clamp(2.5px, 1.8cqi, 4.5px);
+  font-size: clamp(0.62rem, 0.8vw, 0.82rem);
+  font-size: clamp(0.52rem, 5.75cqi, 0.82rem);
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.2;
@@ -309,8 +313,8 @@ h2 {
 }
 
 .skill-logo {
-  width: clamp(13px, 1.15vw, 15px);
-  height: clamp(13px, 1.15vw, 15px);
+  width: clamp(10px, 6.8cqi, 15px);
+  height: clamp(10px, 6.8cqi, 15px);
   object-fit: contain;
   flex-shrink: 0;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
@@ -330,7 +334,7 @@ h2 {
 }
 
 .skill-logo-bright {
-  filter: brightness(1.45) contrast(1.05) drop-shadow(0 0 1px rgba(255, 255, 255, 0.45));
+  filter: brightness(1.75) saturate(1.2) drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
 }
 
 .skill-logo-svg {
@@ -510,27 +514,13 @@ footer {
   }
 
   .skills li {
-    padding: 7px 9px;
+    padding: 7px 8px;
     border-radius: 11px;
     gap: 4px;
   }
 
   .skill-cat {
     font-size: 0.56rem;
-  }
-
-  .stack-list {
-    gap: 4px 7px;
-  }
-
-  .stack-item {
-    font-size: clamp(0.66rem, 2.6vw, 0.76rem);
-    gap: 3px;
-  }
-
-  .skill-logo {
-    width: 13px;
-    height: 13px;
   }
 
   .panel-connect {
@@ -639,20 +629,6 @@ footer {
     display: none;
   }
 
-  .stack-list {
-    gap: 3px 6px;
-  }
-
-  .stack-item {
-    font-size: 0.65rem;
-    gap: 3px;
-  }
-
-  .skill-logo {
-    width: 12px;
-    height: 12px;
-  }
-
   .panel-connect {
     padding: 8px 14px;
     gap: 10px;
@@ -744,5 +720,13 @@ footer {
   .btn {
     padding: 6px;
     font-size: 0.7rem;
+  }
+}
+
+/* Ultra-narrow screens (<= 355px): single-column skill tiles so every stack stays legible in one row */
+@media (max-width: 355px) {
+  .skills {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 }
