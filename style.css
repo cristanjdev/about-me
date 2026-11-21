@@ -103,19 +103,16 @@ body {
   position: relative;
   z-index: 1;
   width: min(1160px, 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(10px, 1.8dvh, 18px);
-}
-
-/* Bento grid making full use of horizontal width */
-.bento {
-  width: 100%;
   display: grid;
   grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
-  gap: clamp(12px, 1.6vw, 18px);
+  column-gap: clamp(12px, 1.6vw, 18px);
+  row-gap: clamp(10px, 1.8dvh, 16px);
   align-items: stretch;
+}
+
+/* Bento grid items participate directly in .shell so footer aligns cleanly under the right column */
+.bento {
+  display: contents;
 }
 
 /* Apple Liquid Glass surface */
@@ -417,6 +414,7 @@ h2 {
 }
 
 footer {
+  grid-column: 2;
   width: 100%;
   color: var(--text-muted);
   font-size: clamp(0.72rem, 0.88vw, 0.8rem);
@@ -426,7 +424,7 @@ footer {
 
 /* Tablets & compact laptops */
 @media (max-width: 1120px) {
-  .bento {
+  .shell {
     grid-template-columns: minmax(225px, 275px) minmax(0, 1fr);
   }
 
@@ -446,12 +444,12 @@ footer {
   }
 
   .shell {
-    gap: 8px;
-  }
-
-  .bento {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  footer {
+    grid-column: 1;
   }
 
   .right-stack {
@@ -559,12 +557,13 @@ footer {
   }
 
   .shell {
-    gap: 6px;
+    grid-template-columns: minmax(185px, 230px) minmax(0, 1fr);
+    column-gap: 8px;
+    row-gap: 6px;
   }
 
-  .bento {
-    grid-template-columns: minmax(185px, 230px) minmax(0, 1fr);
-    gap: 8px;
+  footer {
+    grid-column: 2;
   }
 
   .right-stack {
@@ -659,9 +658,16 @@ footer {
     padding: 8px 10px;
   }
 
-  .bento,
-  .right-stack {
+  .shell {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  footer {
+    grid-column: 1;
+  }
+
+  .right-stack {
     gap: 8px;
   }
 
