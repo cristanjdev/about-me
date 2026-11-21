@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #0b1d3a, #1e3a8a);
+  color: #1f2937;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+.card {
+  background: #ffffff;
+  max-width: 640px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #38bdf8;
+}
+
+h1 {
+  margin-top: 16px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0b1d3a;
+}
+
+.role {
+  color: #0284c7;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+section {
+  margin-top: 28px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #1e3a8a;
+  border-bottom: 3px solid #38bdf8;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.7;
+}
+
+.skills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills li {
+  background: #e0f2fe;
+  color: #075985;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.links a {
+  background: #1e3a8a;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.links a:hover {
+  background: #0284c7;
+}
+
+footer {
+  margin-top: 24px;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
